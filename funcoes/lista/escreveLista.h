@@ -10,7 +10,7 @@ void escreveLista(lista *l, char *nomeArquivo){
   else
   {
    while (item != NULL) {
-     fprintf(arq, "%.2f ," , item->preco);
+     fprintf(arq, "%.2f" , item->preco);
      fputs(item->nome, arq);
      fputs("\n", arq);
      aux = item;

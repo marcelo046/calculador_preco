@@ -8,12 +8,13 @@
 #include "funcoes/todas.h"
 
 int main(int argc, char const *argv[]) {
-
+  char nomeArq[] = "itens.txt";
   lista *itens = NULL;
-  itens = insereRegistro(itens);
-  itens = insereRegistro(itens);
-  itens = insereRegistro(itens);
+  itens = carregaLista(itens, nomeArq);
+  //itens = insereRegistro(itens);
+  //itens = insereRegistro(itens);
   listaRegistros(itens);
-  
+  printf("\ndepois de apertar enter\n");
+  pausar();
   return 0;
 }

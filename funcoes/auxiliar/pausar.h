@@ -6,20 +6,18 @@
 void pausar() {
   int i = 0;
   char lixo;
-  limparBuffer();
   printf("\nPressione enter para continuar...\n");
   scanf("%c", &lixo);
-  //limparBuffer();
+  if (lixo != '\n') limparBuffer();
 }
 
 void debug(char *msg) {
   int i = 0;
   char lixo;
-  limparBuffer();
   printf("%s\n", msg);
   printf("\nPressione enter para continuar...\n");
   scanf("%c", &lixo);
-  //limparBuffer();
+  if (lixo != '\n') limparBuffer();
 }
 
 #endif // PAUSAR
