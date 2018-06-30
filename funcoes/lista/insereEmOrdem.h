@@ -1,28 +1,24 @@
 
-Pessoa *insereEmOrdem(Pessoa *a, Pessoa *n) {
-  Pessoa *novo = (Pessoa*)malloc(sizeof(Pessoa));
-  Pessoa *aux = a;
+lista *insereEmOrdem(lista *a, lista *n) {
+  lista *novo = (lista*)malloc(sizeof(lista));
+  lista *aux = a;
 
   if(novo == NULL) {
-    printf("nao foi possivel alocar memoria\n");
+    printf("\nnao foi possivel alocar memoria\n");
+    pausar();
     return a;
   }
 
   strcpy(novo->nome,n->nome);
-  strcpy(novo->telefone,n->telefone);
-  strcpy(novo->endereco,n->endereco);
-  novo->cep = n->cep;
-  strcpy(novo->dtNasc,n->dtNasc);
+  novo->preco = n->preco;
   novo->prox = NULL;
   novo->ant = NULL;
 
   if(a == NULL)
     return novo;
 
-  while (strcmp(novo->nome,aux->nome) > 0)
-  {
-    if (aux->prox == NULL)
-    {
+  while (novo->preco > aux->preco) {
+    if (aux->prox == NULL) {
       aux->prox = novo;
       novo->ant = aux;
       novo->prox = NULL;
@@ -31,20 +27,17 @@ Pessoa *insereEmOrdem(Pessoa *a, Pessoa *n) {
     aux = aux->prox;
   }
 
-  if(aux->ant != NULL)
-  {
+  if(aux->ant != NULL) {
     novo->prox = aux;
     novo->ant = aux->ant;
     (novo->ant)->prox = novo;
     (novo->prox)->ant = novo;
-    return a;
   }
-  else
-  {
+  else {
     aux->ant = novo;
     novo->prox = aux;
     novo->ant = NULL;
     a = novo;
-    return a;
   }
+  return a;
 }

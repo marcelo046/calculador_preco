@@ -1,15 +1,13 @@
-void listaRegistros(Pessoa *l)
-{
+void listaRegistros(lista *l) {
     //Declarações
-    Pessoa *pessoa = l;
-    int pause;
+    lista *item = l;
     //Instruções
-    int i = 0;
-    printf("\n\n=========== lista de contatos =============\n\n");
-    while (pessoa != NULL) {
-      mostraRegistro(pessoa);
-      pessoa = pessoa->prox;
+    limparTela();
+    printf("=========== lista de itens ===========\n");
+    printf("preco | nome\n\n");
+    while (item != NULL) {
+      mostraRegistro(item);
+      item = item->prox;
     }
-    printf("\n\n\nDigite um numero e de enter pra continuar\n");
-    scanf("%d",&pause);
+    pausar();
 }

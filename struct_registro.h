@@ -1,11 +1,8 @@
+// definir MAX na função principal
 
-typedef struct registro{
-  char nome[MAX_CARACTER];
-  char telefone[11];
-  char endereco[MAX_CARACTER];
-  unsigned int cep;
-  char dtNasc[11];
-
-  struct registro *ant;
-  struct registro *prox;
-} Pessoa;
+typedef struct Lista{
+  float preco;
+  char nome[MAX];
+  struct Lista *ant;
+  struct Lista *prox;
+} lista;

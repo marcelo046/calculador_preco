@@ -1,27 +1,22 @@
 
-Pessoa *carregaLista(Pessoa *l){
+lista *carregaLista(lista *l, char *nomeArquivo) {
   //Declarações
-  FILE *p_arq;
-  Pessoa temp;
-  int pause;
+  FILE *arq;
+  lista temp;
   //Instruções
 
-  if ((p_arq=fopen("contatos.txt","r"))==NULL)
-  {
-      return NULL;
+  if ((arq=fopen(nomeArquivo,"r"))==NULL) {
+    printf("arquivo nao pode ser aberto\n");
+    pausar();
+    return NULL;
   }
-  else
-  {
-    while(!feof(p_arq))
-    {
-       fscanf(p_arq, "%s\n" ,temp.nome);
-       fscanf(p_arq, "%s\n" ,temp.telefone);
-       fscanf(p_arq, "%s\n" ,temp.endereco);
-       fscanf(p_arq, "%u\n" ,&temp.cep);
-       fscanf(p_arq, "%s\n$\n" ,temp.dtNasc);
-       l = insereEmOrdem(l,&temp);
+  else {
+    while(!feof(arq)) {
+      fscanf(arq, "%f ," , &temp.preco);
+      fgets(temp.nome, MAX, arq);
+      l = insereEmOrdem(l,&temp);
     }
-    fclose(p_arq);
+    fclose(arq);
     return l;
   }
 }

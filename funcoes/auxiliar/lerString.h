@@ -8,12 +8,17 @@
 
 void lerString(char *string, int nroLetras) {
   int i = 0;
+  static int chamadas = 0;
   char lixo;
+  if (chamadas)
+    while ((lixo = getc(stdin) ) != '\n') {}
+  lixo = 'a';
   scanf("%c", string);
   if (*string != '\n')
     while ( ((string[++i] = getc(stdin) ) != '\n') && (i < nroLetras-1)) {}
   if(i == nroLetras-1) while ((lixo = getc(stdin) ) != '\n') {}
   string[i] = '\0';
+  chamadas++;
 }
 
 #endif // LER_STRING

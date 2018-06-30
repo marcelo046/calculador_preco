@@ -1,32 +1,15 @@
 
-Pessoa *insereRegistro(Pessoa *l){
+lista *insereRegistro(lista *l){
    //Declarações
-   Pessoa pessoa;
+   lista item;
    //Instruções
-   printf("Nome: ");
-   limpaBuffer();
-   fgets(pessoa.nome,MAX_CARACTER,stdin);
-   tiraTerminador(pessoa.nome);
-   trocaEspaco(pessoa.nome);
+   limparTela();
+   printf("Nome do produto: \n");
+   lerString(item.nome, MAX);
+   printf("Valor do produto: \n");
+   scanf("%f", &item.preco);
 
-   leTelefone(pessoa.telefone);
-
-   printf("Endereco: ");
-   fflush(stdin);
-   fgets(pessoa.endereco,MAX_CARACTER,stdin);
-   tiraTerminador(pessoa.endereco);
-   trocaEspaco(pessoa.endereco);
-
-   printf("CEP: ");
-   scanf("%u",&pessoa.cep);
-
-   limpaBuffer();
-   leData(pessoa.dtNasc);
-
-   limpaTela();
-   mostraRegistro(&pessoa);
-
-   l = insereEmOrdem(l,&pessoa);
-   pausar("");
+   l = insereEmOrdem(l,&item);
+   //debug("sera se o item foi inserido?");
    return l;
 }
