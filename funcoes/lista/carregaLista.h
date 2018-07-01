@@ -32,7 +32,7 @@ lista *carregaLista(lista *l, char *nomeArquivo) {
   }
   else {
     while(!feof(arq)) {
-      fscanf(arq, "%f", &temp.preco);
+      fscanf(arq, "%f / ", &temp.preco);
       if (lerStringArq(arq, temp.nome) == 0) break;
       l = insereEmOrdem(l,&temp);
     }

@@ -3,22 +3,29 @@
 
 #include <stdio.h>
 
-// objetivo:    Ler entrada de caracteres do teclado, e armazenar na string
-// parametros:  vetor de caracteres e tamanho desse vetor
+void tiraTerminador(char *string) {
+  if (string[strlen(string)-1] == '\n')
+    string[strlen(string)-1] = '\0';
+}
 
 void lerString(char *string, int nroLetras) {
-  int i = 0;
-  static int chamadas = 0;
-  char lixo;
-  if (chamadas)
-    while ((lixo = getc(stdin) ) != '\n') {}
-  lixo = 'a';
-  scanf("%c", string);
-  if (*string != '\n')
-    while ( ((string[++i] = getc(stdin) ) != '\n') && (i < nroLetras-1)) {}
-  if(i == nroLetras-1) while ((lixo = getc(stdin) ) != '\n') {}
-  string[i] = '\0';
-  chamadas++;
+  int valido, tamanho;
+  do {
+    fgets(string, nroLetras, stdin);
+    tiraTerminador(string);
+
+    if ((tamanho=strlen(string)) < nroLetras-1) {
+        valido = (tamanho > 0);
+    } else if (getc(stdin) == '\n') {
+      valido = 1;
+    } else {
+      limparBuffer();
+      valido = 0;
+    }
+    if (!valido)
+      printf("Escreva nome de 0 a %d letras:\n", nroLetras-1);
+  } while(!valido);
 }
+
 
 #endif // LER_STRING

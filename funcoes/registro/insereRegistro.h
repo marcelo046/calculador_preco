@@ -6,9 +6,10 @@ lista *insereRegistro(lista *l){
    limparTela();
    printf("Nome do produto: \n");
    lerString(item.nome, MAX);
-   printf("Valor do produto: \n");
+   printf("\nValor do produto: \n");
    scanf("%f", &item.preco);
-
+   limparBuffer();
+   
    l = insereEmOrdem(l,&item);
    //debug("sera se o item foi inserido?");
    return l;

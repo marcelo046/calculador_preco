@@ -7,8 +7,10 @@
 #include "lista/escreveLista.h"
 #include "lista/insereEmOrdem.h"
 #include "lista/carregaLista.h"
+#include "lista/apagaLista.h"
 
 #include "registro/mostraRegistro.h"
 #include "registro/insereRegistro.h"
 #include "registro/listaRegistros.h"
 #include "registro/removeRegistro.h"
+#include "registro/sair.h"
