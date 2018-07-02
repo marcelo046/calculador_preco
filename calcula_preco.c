@@ -4,20 +4,30 @@
 #include <ctype.h>
 
 #define MAX 50
+// arquivo que guarda nome dos outros arquivos
+#define REG_ARQS "arquivos.txt"
 
 #include "struct_registro.h"
 #include "funcoes/todas.h"
 
 int main(int argc, char const *argv[]) {
-  char nomeArq[] = "itens.txt";
+  char nomeArq[MAX];
   char opcao;
   lista *itens = NULL;
   itens = carregaLista(itens, nomeArq);
 
+  // area de destes
+  /*
+  FILE *a = fopen(REG_ARQS, "r");
+  printf("\ntotal de arquivos %d\n", contaArquivos(a));
+  fclose(a);
+  return 0;
+  //*/
+
   do {
     //limparTela();
     listaRegistros(itens);
-    opcao = mostraMenu();
+    opcao = mostraMenu(nomeArq);
 
     switch (opcao) {
       case '1':
@@ -27,7 +37,7 @@ int main(int argc, char const *argv[]) {
         //itens = removeRegistro(itens); // terminar
         break;
       case '3':
-        //escolhe arquivo
+        itens = trocarArquivo(itens, nomeArq);
         break;
       case '4':
         itens = apagaLista(itens);

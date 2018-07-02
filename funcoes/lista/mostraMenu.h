@@ -1,6 +1,6 @@
-char mostraMenu(){
-    char opcao;
-    printf("\n\n\n");
+char mostraMenu(char *nomeArq){
+
+    printf("\n\n\n  > %s <\n",nomeArq);
     printf("============ Menu ============\n");
     printf("|  1 - Inserir item          |\n");
     printf("|  2 - Remover item          |\n");
@@ -9,9 +9,5 @@ char mostraMenu(){
     printf("|  0 - Sair                  |\n");
     printf("==============================\n");
     printf("\nOpcao: ");
-    //lerString(&opcao, 1);
-    opcao = getc(stdin);
-    limparBuffer();
-    return opcao;
-    //return '1';
+    return lerChar();
 }
