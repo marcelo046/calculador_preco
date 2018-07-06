@@ -1,4 +1,5 @@
-int lerStringArq(FILE *arq, char *nome, int tam) {
+int lerStringArq(FILE *f, char *nome, int tam) {
+  FILE *arq = f;
   char letra;
   int i = 0;
   while (!feof(arq) && (letra = fgetc(arq)) != '\n' && i<tam) {

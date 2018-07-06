@@ -1,21 +1,16 @@
-lista *escreveLista(lista *l, char *nomeArquivo){
+lista *escreveLista(lista *l){
   //Declarações
   FILE *arq;
   lista *item = l;
   //Instruções
-  if ((arq=fopen(nomeArquivo,"w"))==NULL) {
-     printf("Arquivo nao pode ser aberto.");
-     pausar();
+  if ((arq=abrirArq(currentFile,"w+"))==NULL) {
      return l;
   }
-  else
-  {
-   while (item != NULL) {
-     fprintf(arq, "%.2f / " , item->preco);
-     fputs(item->nome, arq);
-     fputs("\n", arq);
-     item = item->prox;
-   }
+  while (item != NULL) {
+    fprintf(arq, "%.2f / " , item->preco);
+    fputs(item->nome, arq);
+    fputs("\n", arq);
+    item = item->prox;
   }
   fclose(arq);
   return l;

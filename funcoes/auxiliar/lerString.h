@@ -8,8 +8,9 @@ void tiraTerminador(char *string) {
     string[strlen(string)-1] = '\0';
 }
 
-void lerString(char *string, int nroLetras) {
+void lerString(char *string, int nroLetras, char *msg) {
   int valido, tamanho;
+  printf("%s",msg);
   do {
     fgets(string, nroLetras, stdin);
     tiraTerminador(string);

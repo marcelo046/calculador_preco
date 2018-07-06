@@ -1,9 +1,9 @@
-lista *sair(lista *itens, char *nomeArquivo) {
+lista *sair(lista *itens) {
   limparTela();
 
   if (confirmar("Deseja salvar arquivo? [s/n]")) {
     printf("Salvando e saindo...\n");
-    itens = escreveLista(itens, nomeArquivo);
+    itens = escreveLista(itens);
   } else {
     printf("Saindo sem salvar...\n");
   }

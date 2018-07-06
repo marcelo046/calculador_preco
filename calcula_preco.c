@@ -2,24 +2,35 @@
 #include <string.h>
 #include <stdlib.h>
 #include <ctype.h>
+#include <dirent.h>
 
 #define MAX 50
 // arquivo que guarda nome dos outros arquivos
-#define REG_ARQS "arquivos.txt"
+#define REG_ARQS "_arquivos.txt"
+#define INICIAL "_listaDeItens.txt"
+#define ATUAL "_arq_atual.txt"
+
+char currentFile[MAX];
 
 #include "struct_registro.h"
 #include "funcoes/todas.h"
 
 int main(int argc, char const *argv[]) {
-  char nomeArq[MAX];
+
   char opcao;
   lista *itens = NULL;
-  itens = carregaLista(itens, nomeArq);
+
+  //getRegistrAtual(currentFile);
+
+  //atualListaArq();
+  //return 0;
+
+  itens = carregaLista(itens);
 
   // area de destes
   /*
-  FILE *a = fopen(REG_ARQS, "r");
-  printf("\ntotal de arquivos %d\n", contaArquivos(a));
+  FILE *a = fopen(nomeArq, "r");
+  printf("\ntotal de linhas %d\n", contaLinhasArq(a));
   fclose(a);
   return 0;
   //*/
@@ -27,35 +38,29 @@ int main(int argc, char const *argv[]) {
   do {
     //limparTela();
     listaRegistros(itens);
-    opcao = mostraMenu(nomeArq);
+    opcao = mostraMenu();
 
     switch (opcao) {
       case '1':
         itens = insereRegistro(itens);
         break;
       case '2':
-        //itens = removeRegistro(itens); // terminar
+        itens = apagaLista(itens);
         break;
       case '3':
-        itens = trocarArquivo(itens, nomeArq);
+        itens = opcoesArquivo(itens);
         break;
       case '4':
         itens = apagaLista(itens);
         break;
       case '0':
-        itens = sair(itens, nomeArq);
+        itens = sair(itens);
         break;
       default:
         printf("\nOpcao [%c] invalida!!!\n",opcao);
         pausar();
     }
   }while(opcao != '0');
-
-  //itens = insereRegistro(itens);
-  //listaRegistros(itens);
-  //itens = insereRegistro(itens);
-  //listaRegistros(itens);
-  //itens = escreveLista(itens, nomeArq);
 
   return 0;
 }

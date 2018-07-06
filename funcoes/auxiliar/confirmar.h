@@ -7,10 +7,10 @@ int confirmar(char *msg) {
     opcao = getc(stdin);
     limparBuffer();
     opcao = tolower(opcao);
-    valido = (opcao == 's' || opcao == 'n');
+    valido = (opcao == 's' || opcao == 'n' || opcao == '\n');
     if (!valido)
       printf("\nDigite 's' ou 'n':\n");
   } while(!valido);
 
-  return (opcao == 's');
+  return (opcao == 's' || opcao == '\n');
 }
